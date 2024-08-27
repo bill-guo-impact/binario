@@ -27,7 +27,7 @@
 		justify-content: space-evenly;
 		flex-direction: column;
 		align-items: center;
-		background-color: #0d1117;
+		background-color: #ad835a;
 		color: #2ddaff;
 		z-index: -2;
 		overflow: hidden;

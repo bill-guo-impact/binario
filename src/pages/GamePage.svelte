@@ -12,7 +12,7 @@
     import BinarioCore from "../core";
     import { countSubstring } from "../core/helpers";
     import type { TileValues, VerificationResult } from "../types";
-    
+
     export let size: number;
     const totalTiles = size ** 2;
     const binario = new BinarioCore(size);
@@ -42,7 +42,7 @@
 
         if (prevStep[2] === "1" || prevStep[2] === "0") {
             tile.classList.add(`tile_${prevStep[2]}`)
-        }  
+        }
         binario.undo()
         countTiles();
     }
@@ -56,7 +56,7 @@
         if (unsolved == 0) {
             verificationResult = binario.verify()
             verificationResult.isError ? showError() : isPlay = false;
-        } else if (unsolved = 1 && errorLines.length)  {
+        } else if (unsolved == 1 && errorLines.length)  {
             for (let i = 0; i < errorLines.length; i++) {
                 errorLines[i].classList.remove("tile_error");
             }
@@ -108,25 +108,66 @@
     <Counter tileStats="{tileStats}"/>
 </div>
 
-<Field binario="{binario}" changeTile="{changeTile}" />
-<UndoBtn undo="{undo}"/>
+<div class="content">
+    <div class="instructions">
+        <h2>Game Instructions</h2>
+        <ul>
+            <li>More than two tiles of the same color can't be adjacent. Therefore, if two adjacent cells contain the same color, the cells next must contain the other color (xxx00x → xx1001).</li>
+            <li>Each row and each column must contain an equal number of tiles of each color. (For example, if you are playing on an 8x8 field, each column and row must contain 4 tiles of each color.)</li>
+            <li>Each row and column must be unique.</li>
+        </ul>
+    </div>
+
+    <div class="game">
+        <Field binario="{binario}" changeTile="{changeTile}" />
+        <div class="undo">
+            <UndoBtn undo="{undo}"/>
+        </div>
+    </div>
+</div>
 
 {#if verificationResult.isError}
     <ErrorMessage>{verificationResult.message}</ErrorMessage>
 {/if}
 
 <style lang="scss">
-    .stats {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0.5rem 4.2rem;
-        &__btns {
-            display: flex;
-            flex-direction: row;
-            gap: 1.5rem;
-            z-index: 3;
-        }
+  .stats {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem 4.2rem;
+    &__btns {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+      z-index: 3;
     }
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 1rem 4.2rem;
+  }
+
+  .instructions {
+    width: 45%;
+    padding-right: 2rem;
+  }
+
+  .game {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .undo {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
 </style>
