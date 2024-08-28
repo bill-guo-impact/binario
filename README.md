@@ -14,3 +14,7 @@ All game logic is written in vanilla TypeScript and does not depend on any libra
 
 <div align="center">Made with &#9829;</div>
 <div align="center"><a href="https://github.com/cheatsnake/binario/blob/master/LICENSE">LICENSE</a> 2022</div>
+
+## Node
+
+Use Node 16
