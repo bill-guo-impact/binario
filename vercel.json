@@ -1,0 +1,19 @@
+{
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "build": {
+      "env": {
+        "PYTHON": "python3",
+        "PIP_INSTALL": "pip install --upgrade setuptools"
+      },
+      "commands": [
+        "npm install",
+        "npm run build"
+      ]
+    }
+  }
+  
