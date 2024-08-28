@@ -92,7 +92,6 @@
     onMount(() => {
         countTiles();
     })
-
 </script>
 
 {#if !isPlay}
@@ -104,7 +103,7 @@
         <BackBtn />
         <UpdateBtn />
     </div>
-    <Timer isPlay="{isPlay}" />
+    <h1>Binario</h1>
     <Counter tileStats="{tileStats}"/>
 </div>
 
@@ -119,6 +118,7 @@
     </div>
 
     <div class="game">
+        <Timer isPlay="{isPlay}" />
         <Field binario="{binario}" changeTile="{changeTile}" />
         <div class="undo">
             <UndoBtn undo="{undo}"/>
@@ -131,43 +131,115 @@
 {/if}
 
 <style lang="scss">
-  .stats {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.5rem 4.2rem;
-    &__btns {
+    .stats {
+      width: 100%;
       display: flex;
-      flex-direction: row;
-      gap: 1.5rem;
-      z-index: 3;
+      flex-direction: column; // Stack items vertically by default
+      align-items: center;
+      padding: 0.5rem 4.2rem;
+  
+      &__btns {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+  
+      h1 {
+        color: black;
+        font-size: 5rem;
+      }
+  
+      @media (min-width: 768px) {
+        flex-direction: row; // Arrange items in a row on larger screens
+        justify-content: space-between;
+        padding: 0.5rem 4.2rem;
+      }
+  
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 3rem; // Smaller font size on small screens
+        }
+      }
     }
-  }
-
-  .content {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 1rem 4.2rem;
-  }
-
-  .instructions {
-    width: 45%;
-    padding-right: 2rem;
-  }
-
-  .game {
-    width: 55%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .undo {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-</style>
+  
+    .content {
+      display: flex;
+      flex-direction: column; // Stack content vertically by default
+      width: 100%;
+      padding: 5rem 7rem;
+      overflow-x: hidden; // Prevent horizontal overflow
+      overflow-y: auto; // Enable vertical scrolling if needed
+  
+      @media (min-width: 768px) {
+        flex-direction: row; // Arrange content in a row on larger screens
+        justify-content: space-between;
+      }
+  
+      @media (max-width: 480px) {
+        padding: 2rem 1rem; // Adjust padding on smaller screens
+      }
+    }
+  
+    .instructions {
+      width: 100%; // Full width by default
+      padding-right: 1rem;
+  
+      h2 {
+        color: black;
+        font-size: 2rem; // Smaller font size on mobile
+        padding-bottom: 1rem;
+      }
+  
+      ul {
+        list-style-position: inside;
+        padding-left: 0;
+        margin-left: 0;
+        text-align: left;  // Enforce left alignment
+        font-size: 1.5rem; // Smaller font size on mobile
+        color: #000;
+      }
+  
+      li {
+        margin-bottom: 0.5rem;
+        padding-left: 0;
+        margin-left: 0;
+        text-align: left;  // Enforce left alignment
+      }
+  
+      @media (min-width: 768px) {
+        width: 48%; // Adjust width on larger screens
+      }
+    }
+  
+    .game {
+      width: 100%; // Full width by default
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+  
+      @media (min-width: 768px) {
+        width: 55%; // Adjust width on larger screens
+      }
+  
+      @media (max-width: 480px) {
+        transform: scale(0.8); // Scale down the game board
+        transform-origin: top; // Ensure scaling is from the top
+      }
+    }
+  
+    .undo {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    @media (max-width: 768px) {
+      .content {
+        padding: 2rem 1rem; // Adjust padding on smaller screens
+      }
+    }
+  </style>
+  

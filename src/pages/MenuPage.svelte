@@ -12,7 +12,6 @@ import MenuBtn from "../components/Buttons/MenuBtn.svelte";
         <MenuBtn url="/12">12x12</MenuBtn>
         <MenuBtn url="/about" accent="{true}">About</MenuBtn>
     </div>
-    <a href="https://twitter.com/yurace_" class="label">Made by <b>Yury</b></a>
 </div>
 <div class="area" >
     <ul class="circles">
