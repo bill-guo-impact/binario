@@ -103,7 +103,7 @@
         <BackBtn />
         <UpdateBtn />
     </div>
-    <h1>Complete the game & win a prize!</h1>
+    <h1>Binario</h1>
     <Counter tileStats="{tileStats}"/>
 </div>
 
