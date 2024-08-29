@@ -40,7 +40,7 @@ export default class BinarioCore {
             throw new Error(INVALID_FILL_FACTOR);
         this.task = prepareField(this.field, fillFactor);
         if (this.size===6){
-            this.task = staticPuzzles6x6Hard[getRandomNumber(staticPuzzles6x6Hard.length - 1)];
+            this.task = staticPuzzles6x6Medium[getRandomNumber(staticPuzzles6x6Medium.length - 1)];
         }
     }
 
